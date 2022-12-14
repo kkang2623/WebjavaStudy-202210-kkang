@@ -1,29 +1,8 @@
 package j16_Bean;
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
 
 import java.util.Objects;
-
-/*
-정보를 담는 객체를 Entity Class라 한다.
-번호,주소 등등 정보 담기
-[기본세팅]
-멤버변수 선언
-생성자 정의
-Getters and Setters 정의
-Equals and Hashcode 정의
-toString 정의
-----------------------------------
- */
-
-@NoArgsConstructor
-@AllArgsConstructor // 매개변수가 다 있다
-//@Getter
-//@Setter
-//@EqualsAndHashCode
-//@ToString
-@Data // 위에 네개(Getter,Setter,EqualsAndHashCode,ToString) 가 포함된 것
 
 public class UserEntity {
     private String username;
@@ -32,6 +11,72 @@ public class UserEntity {
     private String name;
 
 
+    public UserEntity(){ //기본생성자 만들기 NoArgsConstructor
+
+    }
+
+    public UserEntity(String username, String password, String email, String name) { //전체생성자 정의 인스트럭터
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(email, that.email) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, email, name);
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
 
 }

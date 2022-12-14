@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class PersonRequired { //상수.
-    private final String name; //@RequiredArgsConstructor 를 선언하면 final 상수를 초기화 해줌
+//@NoArgsConstructor
+public class PersonRequired {
+    private final String name;//멤버변수에 final을 선언하면 필수값이 된다.
+    // @RequiredArgsConstructor = final // @AllArgsConstructor 는 위 아래 둘 다 생성자를 가짐
     private int age;
-
 }
